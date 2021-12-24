@@ -6,23 +6,99 @@
 </head>
 <body>
 <!-- 학원실습 -->
- 학생들의 점수 중 제일 높은 학생명의 결괏값을 가지고와 출력하여라.
- <script type="text/javascript">
- var obj4 ={
+ 실습1. 학생들의 점수 중 제일 높은 학생명의 결괏값을 가지고와 출력하여라.
+<script type="text/javascript">
+ var obj ={
 			scoreArray : null,
 			getMaxAvgScoreName : function(){
-		    
+		    	var maxScore = 0;
+		   		var maxScoreStudentName;
+		   		for(var i=0; i<this.scoreArray.length ;i++){
+		   			if(maxScore<this.scoreArray[i].score){
+		   				maxScore = this.scoreArray[i].score;
+		   				maxScoreStudentName = this.scoreArray[i].studentName;
+		   			}
+		   		}
+		   		return maxScoreStudentName;
 		    }
 		};
 		 
-		obj4.scoreArray = [
+		obj.scoreArray = [
 			{studentName : '홍길동', score: 70},
 			{studentName : '이순신', score: 90},
 			{studentName : '유관순', score: 40}
 		];
 		 
-		console.log(obj4.getMaxAvgScoreName(), '결괏값->이순신');
-
+		console.log(obj.getMaxAvgScoreName(), '결괏값->이순신');
+ </script>
+ <!-- 학원실습(원래 문제, 너무 어렵다고 하니깐 실습1로 수정해주셨음) -->
+ 실습2. 학생들의 점수 평균 중 제일 높은 학생명의 결괏값을 가지고와 출력하여라.
+ <script type="text/javascript">
+ 	var obj2 ={
+			scoreArray : null,
+			getMaxAvgScoreName : function(){
+				//익명함수로 평균 구하는 함수 만들기
+				//for-if로 점수랑 똑같이 평균 비교하기
+				//maxAvg인 사람의 이름 return하기
+				var maxAvg = 0;
+				var maxAvgName;
+				var Avg = function(score){
+					var sum = 0;
+					for(var i=0; i<score.length; i++){
+						sum += score[i];
+					}					
+					return sum/score.length;
+				}
+				for(var i=0; i<this.scoreArray.length; i++){
+					if(maxAvg < Avg(this.scoreArray[i].score)){
+						maxAvg = Avg(this.scoreArray[i].score);
+						maxAvgName = this.scoreArray[i].studentName;
+					}
+				}
+				return maxAvgName;
+			}
+		    	
+		};
+		 
+		obj2.scoreArray = [
+			{studentName : '홍길동', score: [70,45,89]}, //68
+			{studentName : '이순신', score: [90,54,89]}, //77
+			{studentName : '유관순', score: [40,78,65]} //61
+		];
+		 
+		console.log(obj2.getMaxAvgScoreName(), '결괏값->이순신');
+ </script>
+ 
+ 실습2 다른 방법으로 풀어보기
+ <script type="text/javascript">
+ 	var obj3 ={
+			scoreArray : null,
+			getMaxAvgScoreName : function(){
+		    	//익명함수 안만들고 for문에 평균구해보기
+				var maxAvg = 0;
+				var maxAvgName;
+				for(var i=0; i<this.scoreArray.length; i++){
+					var sum=0;
+					for(var j=0; j<this.scoreArray[i].score.length;j++){
+						sum += this.scoreArray[i].score[j];
+					}
+					var avg = sum/this.scoreArray[i].score.length;
+					if(maxAvg < avg){
+						maxAvg = avg;
+						maxAvgName = this.scoreArray[i].studentName;
+					}
+				}
+				return maxAvgName;
+		    }
+		};
+ 
+ 	obj3.scoreArray = [
+		{studentName : '홍길동', score: [70,45,89]}, //68
+		{studentName : '이순신', score: [90,54,89]}, //77
+		{studentName : '유관순', score: [40,78,65]} //61
+	];
+	 
+	console.log(obj3.getMaxAvgScoreName(), '결괏값->이순신');
  </script>
 </body>
 </html>
