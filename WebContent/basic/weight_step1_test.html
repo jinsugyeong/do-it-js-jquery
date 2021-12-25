@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>적정 체중 구하는 테스트기</title>
+</head>
+<body>
+<script type="text/javascript">
+	//적정 체중 = (본인신장 -100)*0.9
+	//변수에 체중과 신장 저장하기
+	//적정 체중 변수에 저장
+	
+	//prompt("질문","기본응답") 메서드 
+	var userHeight = prompt("키를 입력해주세요","0");
+	var userWeight = prompt("몸무게를 입력해주세요","0");
+	
+	var nomalWeight = (userHeight - 100)*0.9;
+	
+	if(userWeight<=nomalWeight){
+		document.write("적정 체중입니다.");
+	}else {
+		document.write("적정 체중에서 "+(userWeight-nomalWeight).toFixed(1)+"kg 오바입니다.");
+	}
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	다음 연산자를 이용하여 평균 판매량을 구하고, <br>
+	4분기 판매량을 이벽하여 평균 판매량의 이상/미달 값을 출력하세요
+	전 분기 평균 판매량보다 판매량이 높거나 같을 경우에는 "판매량이 평균 이상입니다",<br>
+	낮을 경우에는 "판매량이 평균 미달입니다"라고 화면에 출력하세요.
+	<table border="1">
+		<tr>
+			<th></th>
+			<th>판매량</th>
+		</tr>
+		<tr>
+			<td>1분기</td>
+			<td>1200</td>
+		</tr>
+		<tr>
+			<td>2분기</td>
+			<td>1300</td>
+		</tr>
+		<tr>
+			<td>3분기</td>
+			<td>1000</td>
+		</tr>
+	</table>
+	
+	<script type="text/javascript">
+		var firstQuarter = 1200;
+		var secondQuarter = 1300;
+		var thirdQuarter = 1000;
+		var fourthQuarter = prompt("4분기 판매량을 입력하세요", 0);
+		var avg = (firstQuarter + secondQuarter +thirdQuarter)/3;
+		
+		if(fourthQuarter>= avg){
+			document.write("판매량이 평균 이상입니다");
+		}else {
+			document.write("판매량이 평균 미달입니다");
+		}
+	</script>
+</body>
+</html>
