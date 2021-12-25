@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>내년 까지 남은 일 수(밀리초)</title>
+</head>
+<body>
+	<h1>2022년까지</h1>
+	<script type="text/javascript">
+		//남은 일 수 = 특정 날짜 개체 - 현재 날짜 객체
+		var today = new Date();
+		var newYear = new Date(2022, 1, 1);
+		var diffDate = Math.floor((newYear.getTime()-today.getTime())/(1000*60*60*24));
+		document.write(diffDate);
+	</script>
+</body>
+</html>
