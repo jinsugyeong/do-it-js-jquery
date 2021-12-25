@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>중첩 for문</title>
+</head>
+<body>
+	5행 5열 표를 만들고, 데이터가 1부터 25까지 출력되도록 작성하시오
+	<script type="text/javascript">
+		//화면에 html태그로 테이블 만들어줄 document함수에 넣을 table태그 변수지정
+		//for문이 이니깐 while문처럼 cnt변수는 필요없지만 1~25 숫자 변수 저장해야함
+		var table = "<table border=1>";
+		var num = 1;
+		for(var i=0; i<5; i++){//다섯행 출력할 반복문
+			table += "<tr>";
+			for(var j=0; j<5; j++){//한행에 다섯열 출력할 반복문
+				table += "<td>"+num+"</td>";
+				num++;				
+			}
+			table += "</tr>";
+		}
+		table += "</table>"
+		document.write(table);
+	</script>
+</body>
+</html>
