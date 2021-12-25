@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	TestScore 객체 생성자 -> <br>
+	두 학생 객체 생성, <br>
+	속성으로 이름,국어점수,영어점수<br>
+	객체 생성시 prototype으로 함수 등록하기<br>
+	getTestInfo(): 이름,국어,영어 정보 출력<br>
+	getAvg() : 평균점수<br>
+	<script type="text/javascript">
+		function TestScore(name,kScore,eScore){
+			this.userName = name;
+			this.kScore = kScore;
+			this.eScore = eScore;
+			this.getTestInfo = function(){
+				console.log('이름 : '+ this.userName);
+				console.log('국어 : '+ this.kScore);
+				console.log('영어 : '+ this.eScore);
+			};
+			this.getAvg = function(){
+				return (this.kScore+this.eScore)/2;
+			};
+		}
+		
+		var kim = new TestScore('김군',80,90);
+		kim.getTestInfo();
+		console.log('평균점수 : '+kim.getAvg());
+		
+		var oh = new TestScore('오군',100,80);
+		oh.getTestInfo();
+		console.log('평균점수 : '+oh.getAvg());
+	</script>
+</body>
+</html>
