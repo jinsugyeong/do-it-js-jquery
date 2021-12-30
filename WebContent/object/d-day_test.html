@@ -5,15 +5,40 @@
 <title>내년 까지 남은 일 수(밀리초)</title>
 </head>
 <body>
-	<h1>2022년까지</h1>
+	<h1>2022년까지</h1>	
 	<script type="text/javascript">
 		//남은 일 수 = 특정 날짜 개체 - 현재 날짜 객체
-		var today = new Date();
-		var newYear = new Date(2022, 1, 1);
-		var diffDate = Math.floor((newYear.getTime()-today.getTime())/(1000*60*60*24));
-		document.write(diffDate);
-		
 		//월과 요일은 숫자 0부터 시작
+		//(1000*60*60*24) -> 1일
+		
+		var today = new Date();
+		console.log(today);
+
+		var newYear = new Date('2022-01-01 00:00:00');
+		console.log(newYear);
+		//var diffDate = Math.floor(newYear.getTime()-today.getTime());
+		var diffDate = (newYear.getTime()-today.getTime())/1000;
+		
+		var dDay = Math.floor(diffDate/60/60/24);
+		document.write(dDay+'일 ');
+		var dHour = Math.floor(diffDate/60/60%24);
+		document.write(dHour+'시간 ');
+		var dMin = Math.floor(diffDate/60%60);
+		document.write(dMin+'분 ');	
+		var dSec = Math.floor(diffDate%60);
+		document.write(dSec+'초 ');
+		
+		setTimeout("location.reload()",1000) //->페이지 새로고침
+		
+		
+		
+		/*
+		출력하고 싶은 형태
+		2022년까지
+		@일		@시간		@분		@초		남았습니다
+		*/
+		
+	
 	</script>
 </body>
 </html>
