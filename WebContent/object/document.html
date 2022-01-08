@@ -8,7 +8,24 @@
 	<h2>실습1</h2>
 	실습. backColor라는 아이디를 가진 버튼을 클릭시 body태그의 배경색상이 '빨강', '초록', '파랑'으로 순환되며
 	배경색상이 변경되도록 하여라
-
+	<br>
+	<button id="backColor">버튼</button>
+	<button id="bgBack">되돌리기</button>
+	<script type="text/javascript">
+		var btn01 = document.getElementById('backColor');
+		var body = document.getElementsByTagName('body');
+		var colorArr = [ '#f00', '#0f0', '#00f'];
+		var i = 0;
+		btn01.onclick = function() {
+			body[0].style.backgroundColor = colorArr[i];
+			i++;
+			if (i == colorArr.length)
+				i = 0;
+		}
+		document.getElementById('bgBack').onclick = function() {
+			body[0].style.background = 'none';
+		}
+	</script>
 
 	<h2>실습2</h2>
 	실습. 아래의 화면의 탭기능을 구현하도록 하여라.
@@ -20,31 +37,53 @@
 	<div class="tab-contant">콘텐츠1</div>
 	<div class="tab-contant" style="display: none;">콘텐츠2</div>
 	<div class="tab-contant" style="display: none;">콘텐츠3</div>
-
+	<script type="text/javascript">
+		var tab = document.getElementsByClassName('tab');
+		var contant = document.getElementsByClassName('tab-contant');
+		
+		for(var j=0; j<tab.length; j++){
+			(function(k){
+				tab[k].onclick = function(){
+					for(var n=0; n<contant.length; n++){
+						contant[n].style.display = 'none';
+					}
+					contant[k].style.display = 'block';
+				}
+			})(j);
+		}
+	</script>
 
 	<h2>실습3</h2>
 	실습. 버튼 클릭시 해당 버튼의 행이 제거 될 수 있도록 하시오
 	<table border="1">
 		<tbody>
 			<tr>
-				<td>제목</td>
+				<td>제목1</td>
 				<td>
 					<button type="button" class="tr-remove">제거</button>
 				</td>
 			</tr>
 			<tr>
-				<td>제목</td>
+				<td>제목2</td>
 				<td>
 					<button type="button" class="tr-remove">제거</button>
 				</td>
 			</tr>
 			<tr>
-				<td>제목</td>
+				<td>제목3</td>
 				<td>
 					<button type="button" class="tr-remove">제거</button>
 				</td>
 			</tr>
 		</tbody>
 	</table>
+	<script type="text/javascript">
+		var btn02 = document.querySelectorAll('.tr-remove');
+		for(var n=0; n<btn02.length; n++){
+			btn02[n].onclick = function() {
+				this.parentElement.parentElement.remove();
+			}
+		}		
+	</script>
 </body>
 </html>
