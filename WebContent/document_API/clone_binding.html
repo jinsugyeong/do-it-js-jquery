@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>cloneNode, 동적바인딩 실습</title>
+</head>
+<body>
+	<h4>실습. 추가 버튼을 클릭시 행추가, 삭제 버튼 클릭시 해당 행 제거를 하도록 하시오.</h4>
+	<table border="1">
+		<tr>
+			<td>
+				<input type="text">
+			</td>
+			<td>
+				<button type="button" class="addBtn">추가</button>
+			</td>
+			<td>
+				<button type="button" class="delBtn">제거</button>
+			</td>
+		</tr>
+	</table>
+	<button type="button" class="addBtn" style="margin-top:20px; width: 270px;">추가하기</button>
+	<script type="text/javascript">
+		var table = document.querySelector('table');
+		var addBtn = document.querySelectorAll('.addBtn');
+		for(var i=0; i<addBtn.length; i++){
+			addBtn[i].addEventListener('click', function() {
+				console.log(this);
+				var trClone = table.querySelector('tr').cloneNode(true);
+				trClone.querySelector('input').value = '';
+				table.appendChild(trClone);
+			});
+		}
+		table.addEventListener('click', function(e) {
+			var targetClass = e.target.classList;
+			var tr = e.target.parentElement.parentElement;
+			if(targetClass.contains('addBtn')){
+				var trClone = tr.cloneNode(true);
+				this.appendChild(trClone);
+			}
+			if(targetClass.contains('delBtn')){
+				tr.remove();
+			}
+		});
+	</script>
+</body>
+</html>
