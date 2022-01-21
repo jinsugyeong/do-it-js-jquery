@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>속성 조작 메서드(prop)</title>
+<script src="./resources/js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<h1>속성 조작 메서드(prop)</h1>
+	실습. 1.전체선택 체크박스 클릭시 아래의 행 전체 선택이 되도록하고,
+	<br> 전체체크 클릭시 체크가 해제가 되었다면 아래의 행 전체가 선택 해제 되도록 하여라.
+	<br> 2.반전 버튼 클릭시 체크된 대상은 해제, 해제된 대상은 체크 되도록 하여라.
+	<br> 3.또한 선택된 대상 제거 버튼 클릭시 선택된 행을 제거 하도록 하여라.
+	<br>	<br>	<br>
+	<table border="1">
+		<thead>
+			<tr>
+				<th><label><input type="checkbox" id="allCheck">
+						전체선택</label></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><label><input type="checkbox" class="checks">
+						내용1</label></td>
+			</tr>
+			<tr>
+				<td><label><input type="checkbox" class="checks">
+						내용2</label></td>
+			</tr>
+			<tr>
+				<td><label><input type="checkbox" class="checks">
+						내용3</label></td>
+			</tr>
+			<tr>
+				<td><label><input type="checkbox" class="checks">
+						내용4</label></td>
+			</tr>
+			<tr>
+				<td><label><input type="checkbox" class="checks" on>
+						내용5</label></td>
+			</tr>
+			<tr>
+				<td><label><input type="checkbox" class="checks" on>
+						내용6</label></td>
+			</tr>
+			<tr>
+				<td><label><input type="checkbox" class="checks" on>
+						내용7</label></td>
+			</tr>
+			<tr>
+				<td><label><input type="checkbox" class="checks" on>
+						내용8</label></td>
+			</tr>
+		</tbody>
+	</table>
+	<button type="button" id="checksDel">선택 행 제거</button>
+	<br>
+	<button type="button" id="checksReversal">선택 반전</button>
+
+	<script type="text/javascript">
+		$(function() {
+
+			var $allCheck = $('#allCheck');
+
+			$allCheck.click(function() {
+
+				if ($allCheck.prop('checked') == true) {
+					$('.checks').prop('checked', true);
+					console.log($allCheck.prop('checked'));
+					cnt = $('tbody tr').length;
+				} else {
+					$('.checks').prop('checked', false);
+					cnt = 0;
+				}
+
+				console.log(cnt, '전체선택 누를 때');
+
+			});
+
+			$('#checksReversal').click(function() {
+				$('.checks').each(function() {
+					/* if ($(this).prop('checked') == true) {
+						$(this).prop('checked', false);
+					} else {
+						$(this).prop('checked', true);
+					} */
+					$(this).prop('checked', !$(this).prop('checked')); // !연산자
+
+				});
+				cnt = $('tbody tr').length - cnt;
+				if ($allCheck.prop('checked') == true) {
+					$allCheck.prop('checked', false);
+
+				} else {
+					if (cnt == $('tbody tr').length)
+						$allCheck.prop('checked', true);
+				}
+				console.log(cnt, '반전 버튼 눌렀을때');
+			});
+
+			$('#checksDel').click(function() {
+				$('.checks').each(function() {
+					if ($(this).prop('checked') == true) {
+						$(this).parents('tr').remove();
+						cnt = 0;
+					}
+				});
+				$allCheck.prop('checked', false);
+			});
+			
+			var cnt = 0;
+			$('.checks').click(function() {
+				var len = $('.checks').length;
+				var checkLen = $('.checks:checked').length;
+				
+				$(this).each(function() {
+					if ($(this).prop('checked') == true) {
+						cnt++;
+					} else {
+						cnt--;
+					}
+					console.log(cnt, '증가값');
+
+					if ($allCheck.prop('checked') == true) {
+						$allCheck.prop('checked', false);
+					} else {
+						if (cnt == $('tbody tr').length) {
+							$allCheck.prop('checked', true);
+						}
+					}
+				});
+
+			});
+
+		});
+	</script>
+</body>
+</html>
