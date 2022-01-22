@@ -15,47 +15,74 @@
 	<table border="1">
 		<thead>
 			<tr>
-				<th><label><input type="checkbox" id="allCheck">
-						전체선택</label></th>
+				<th>
+					<label>
+						<input type="checkbox" id="allCheck"> 전체선택
+					</label>
+				</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td><label><input type="checkbox" class="checks">
-						내용1</label></td>
+				<td>
+				<label>
+					<input type="checkbox" class="checks"> 내용1
+				</label>
+				</td>
 			</tr>
 			<tr>
-				<td><label><input type="checkbox" class="checks">
-						내용2</label></td>
+				<td>
+				<label>
+					<input type="checkbox" class="checks"> 내용1
+				</label>
+				</td>
 			</tr>
 			<tr>
-				<td><label><input type="checkbox" class="checks">
-						내용3</label></td>
+				<td>
+				<label>
+					<input type="checkbox" class="checks"> 내용3
+				</label>
+				</td>
 			</tr>
 			<tr>
-				<td><label><input type="checkbox" class="checks">
-						내용4</label></td>
+				<td>
+				<label>
+					<input type="checkbox" class="checks"> 내용4
+				</label>
+				</td>
 			</tr>
 			<tr>
-				<td><label><input type="checkbox" class="checks" on>
-						내용5</label></td>
+				<td>
+				<label>
+					<input type="checkbox" class="checks"> 내용5
+				</label>
+				</td>
 			</tr>
 			<tr>
-				<td><label><input type="checkbox" class="checks" on>
-						내용6</label></td>
+				<td>
+				<label>
+					<input type="checkbox" class="checks"> 내용6
+				</label>
+				</td>
 			</tr>
 			<tr>
-				<td><label><input type="checkbox" class="checks" on>
-						내용7</label></td>
+				<td>
+				<label>
+					<input type="checkbox" class="checks"> 내용7
+				</label>
+				</td>
 			</tr>
 			<tr>
-				<td><label><input type="checkbox" class="checks" on>
-						내용8</label></td>
+				<td>
+				<label>
+					<input type="checkbox" class="checks"> 내용8
+				</label>
+				</td>
 			</tr>
 		</tbody>
 	</table>
-	<button type="button" id="checksDel">선택 행 제거</button>
-	<br>
+	
+	<button type="button" id="checksDel">선택 행 제거</button><br>
 	<button type="button" id="checksReversal">선택 반전</button>
 
 	<script type="text/javascript">
@@ -111,9 +138,10 @@
 			
 			var cnt = 0;
 			$('.checks').click(function() {
+				/* 선생님한테 리뷰받고 추천받은 방법... 
 				var len = $('.checks').length;
 				var checkLen = $('.checks:checked').length;
-				
+				 */
 				$(this).each(function() {
 					if ($(this).prop('checked') == true) {
 						cnt++;
